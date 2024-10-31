@@ -6,86 +6,44 @@ output:
     vertical_layout: fill
 ---
 
+#Instacart 
+“The Instacart Online Grocery Shopping Dataset 2017”, Accessed from https://www.instacart.com/datasets/grocery-shopping-2017 on June 24, 2017.
+
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(plotly)
 library(p8105.datasets)
 library(dplyr)
 ```
-
 ```{r}
-data("ny_noaa")
+# Load the Instacart dataset
+instacart_data <- p8105.datasets::instacart
 
-clean_ny = ny_noaa %>% 
-  janitor::clean_names() %>% 
-  mutate(
-    year = lubridate::year(date),
-    month = lubridate::month(date, label = TRUE),
-    prcp = as.numeric(prcp) / 10, 
-    tmax = as.numeric(tmax) / 10,
-    tmin = as.numeric(tmin) / 10
-  )%>% 
-filter(
-    date >= as.Date("2008-01-01") & date <= as.Date("2008-12-31"))
+# Take a sample of the data for simplified visualization
+set.seed(123)
+instacart_sample <- instacart_data %>%
+  sample_n(10000)
 ```
-Column {data-width=550}
------------------------------------------------------------------------
-
-### Chart A
+##Order Time vs. Add to Cart Order
 ```{r}
-plot_ly(
-  data = clean_ny,
-  x = ~month,
-  y = ~tmax,
-  type = 'box',
-  boxpoints = 'outliers',
-  color = ~month, 
-  colors = "viridis",
-  marker = list(size = 4)
-) %>%
-  layout(
-    title = "Monthly Distribution of Maximum Temperature in New York (2008)",
-    xaxis = list(title = "Month"),
-    yaxis = list(title = "Max Temperature (°C)")
-  )
+# Create a scatterplot showing Order Time vs. Add to Cart Order
+scatter_data <- instacart_sample %>% 
+  group_by(order_hour_of_day, add_to_cart_order) %>% 
+  summarise(count = n(), .groups = 'drop')
+
+scatter_plot <- plot_ly(scatter_data, 
+                        x = ~order_hour_of_day, 
+                        y = ~add_to_cart_order, 
+                        type = 'scatter', 
+                        mode = 'markers', 
+                        size = ~count, 
+                        marker = list(opacity = 0.6)) %>%
+  layout(title = "Scatterplot: Order Hour vs. Add to Cart Position",
+         xaxis = list(title = "Order Hour of the Day"),
+         yaxis = list(title = "Add to Cart Position"),
+         showlegend = FALSE)
+
+scatter_plot
 
 ```
-Column {data-width=450}
------------------------------------------------------------------------
 
-### Chart B
-```{r}
-monthly_pre = clean_ny %>% 
-  filter(!is.na(prcp)) %>% 
-  group_by(month) %>% 
-  summarise(total_prcp = sum(prcp, na.rm = TRUE))
-
-# Create bar plot using plotly
-plot_ly(
-  data = monthly_pre,
-  x = ~month,
-  y = ~total_prcp,
-  type = 'bar',
-  color = ~month,
-  colors = "viridis"
-) %>%
-  layout(
-    title = "Total Monthly Precipitation in New York (2008)",
-    xaxis = list(title = "Month"),
-    yaxis = list(title = "Total Precipitation (mm)"),
-    showlegend = FALSE
-  )
-```
-
-### Chart C
-```{r}
-pie_data <- instacart_sample %>% 
-  group_by(aisle) %>% 
-  summarise(count = n()) %>% 
-  arrange(desc(count)) %>% 
-  top_n(10)
-
-pie_chart <- plot_ly(pie_data, labels = ~aisle, values = ~count, type = 'pie') %>%
-  layout(title = "Proportion of Products Ordered by Top 10 Aisles")
-pie_chart
-```

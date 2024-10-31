@@ -1,0 +1,19 @@
+name: "William internet!"
+output_dir: "."
+navbar:
+  title: "Home page"
+  right:
+    - text: "About Him"
+      href: self.html
+    - text: "Dashboard"
+      href: dash.html
+    - icon: fa-envelope fa-lg
+      href: mailto:mx2286@cumc.columbia.edu
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/william-xie-0809/
+    - icon: fa-github fa-lg
+      href: https://github.com/code-chestnut/code-chestnut.github.io
+
+output:
+  html_document:
+    theme: cerulean

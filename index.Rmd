@@ -1,0 +1,16 @@
+---
+title: "My personal website"
+output: 
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+---
+
+# This is William's space
+Hi, My name is William. I am 23 years old, New Yorker, Gym bro, Football player, Rapper, and Entrepreneur.  
+
+# MY LIFE 
+<img src="me.png" style="width:90%;">
+<img src="R7.png" style="width:90%;">
+
