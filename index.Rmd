@@ -12,9 +12,9 @@ Hi, My name is William. I am 23 years old, New Yorker, Gym bro, Football player,
 
 # MY LIFE 
 <img src="me.png" style="width:90%;">
-<img src="R7.png" style="width:90%;">
+<img src="R7.gif" style="width:90%;">
 
-# Music
+# Fun Music
 <audio controls>
   <source src="Red sun in the sky.mp3" type="audio/mpeg">
 </audio>
