@@ -1,0 +1,62 @@
+---
+title: "William Xie"
+output: 
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+---
+
+Here you'll find information about my education, academic and industry experience, projects, and skills.
+
+## Education
+
+**Columbia University**
+*Master of Public Health* (09/2023 - 05/2025)  
+Concentration in Environmental Health Science, Certificate of Applied Biostatistics  
+
+**New York University**  
+*Bachelor of Science* (09/2019 - 05/2023)  
+Major in Biomolecular Engineering, Minor in Business Studies  
+
+## Academic Experience
+
+### Projects for Analysis of Environmental Health Data  
+Conducted an in-depth analysis of the association between Body Mass Index (BMI) and type 2 diabetes prevalence using the NHANES dataset. Applied logistic regression models to assess odds ratios across BMI categories, interpreting findings to support public health strategies and interventions.
+
+## Industry Experience
+
+### Air Quality Monitoring in the South Bronx  
+*Research Intern* (06/2024 - 08/2024)  
+Collected and analyzed real-time air quality data along commuter routes, visualizing findings with ArcGIS StoryMap to highlight environmental challenges in public spaces. Proposed air quality monitoring strategies to support advocacy and policy initiatives.
+
+### Intern, Strategy & Communications, High Lantern Group  
+*Strategy & Communications Intern* (06/2024 - 08/2024)  
+Supported client communications through data analysis, report generation, and social media strategy. Drafted communications collateral and identified key influencers for strategic initiatives.
+
+### Industry Analyst Intern, CSC Financial Co.  
+*Analyst Intern* (06/2023 - 08/2023)  
+Developed a business plan and financial projections for the medical device industry. Conducted market research and identified regulatory impacts, contributing to strategic decision-making.
+
+### Study Start-Up Specialist Intern, IQVIA  
+*Intern* (05/2021 - 08/2021)  
+Managed clinical study processes, coordinating document preparation and site activation. Conducted landscape analysis of therapeutic areas to identify emerging trends and novel targets.
+
+## Research Experience
+
+### Air Pollutants' Relation to SARS-CoV-2: Co-Binding Factors of ACE2  
+*Research Assistant* (07/2022 - 09/2022)  
+Conducted research on the association between COVID-19 and air pollution, collecting data from varied air quality areas and analyzing ACE2 binding complex properties.
+
+### Application of GS5-MOF Nanoparticles and Activated Platelets in Wound Healing  
+*Online Research* (07/2020 - 09/2020)  
+Conducted biostatistical analysis on the GS5-MOF healing process, presenting findings at the 2020 4th International Conference on Computational Biology and Bioinformatics.
+
+## Skills
+
+- **Programming Languages**: SAS, R, Python, MATLAB  
+- **Software & Techniques**: ArcGIS StoryMap, Data Visualization, Statistical Analysis  
+
+### Navigation
+
+Go [Home](index.html)
