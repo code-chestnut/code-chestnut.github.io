@@ -6,7 +6,7 @@ output:
     vertical_layout: fill
 ---
 
-#Instacart 
+# Instacart 
 “The Instacart Online Grocery Shopping Dataset 2017”, Accessed from https://www.instacart.com/datasets/grocery-shopping-2017 on June 24, 2017.
 
 ```{r setup, include=FALSE}
@@ -24,7 +24,7 @@ set.seed(123)
 instacart_sample <- instacart_data %>%
   sample_n(10000)
 ```
-##Order Time vs. Add to Cart Order
+## Order Time vs. Add to Cart Order
 ```{r}
 # Create a scatterplot showing Order Time vs. Add to Cart Order
 scatter_data <- instacart_sample %>% 
@@ -44,6 +44,46 @@ scatter_plot <- plot_ly(scatter_data,
          showlegend = FALSE)
 
 scatter_plot
+
+```
+## Products Ordered by Department
+```{r}
+# Generate a bar plot to show the number of products ordered by each department
+bar_data <- instacart_sample %>% 
+  group_by(department) %>% 
+  summarise(count = n(), .groups = 'drop') %>% 
+  arrange(desc(count))
+
+bar_plot <- plot_ly(bar_data, 
+                    x = ~reorder(department, -count),  # Reorder departments for descending counts
+                    y = ~count, 
+                    type = 'bar', 
+                    marker = list(opacity = 0.7)) %>%
+  layout(title = "Products Ordered by Department",
+         xaxis = list(title = "Department", tickangle = -45),  # Rotate x-axis labels for readability
+         yaxis = list(title = "Number of Products Ordered"))
+
+bar_plot
+
+```
+
+## Products ordered by the top 7 aisles
+```{r}
+pie_data <- instacart_sample %>% 
+  group_by(aisle) %>% 
+  summarise(count = n(), .groups = 'drop') %>% 
+  arrange(desc(count)) %>% 
+  slice_max(count, n = 7)  # Select top 7 aisles
+
+pie_chart <- plot_ly(pie_data, 
+                     labels = ~aisle, 
+                     values = ~count, 
+                     type = 'pie', 
+                     textinfo = 'label+percent',  # Show labels and percentages
+                     insidetextorientation = 'radial') %>%
+  layout(title = "Proportion of Products Ordered by Top 7 Aisles")
+
+pie_chart
 
 ```
 
